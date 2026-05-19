@@ -1,0 +1,33 @@
+# Jekyll configuration for GitHub Pages SEO
+title: "DevOps Linux Commands: The Complete Guide (2025)"
+description: "The complete DevOps Linux commands reference — system monitoring, process management, networking, Docker, Kubernetes, Git, shell scripting, SSH, and more with step-by-step explanations."
+url: "https://yourname.github.io"
+baseurl: "/devops-linux-commands"
+lang: en
+
+# Author
+author:
+  name: "Your Name"
+
+# GitHub Pages SEO plugin (built-in, no install needed)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Sitemap (auto-generated at /sitemap.xml by jekyll-sitemap)
+# Google Search Console will crawl this automatically
+
+# Theme — choose one that renders markdown cleanly
+theme: minima
+
+# Social / Open Graph (used by Google, Twitter, LinkedIn previews)
+twitter:
+  username: yourhandle
+
+# Ensure assets folder is included
+include:
+  - assets
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge

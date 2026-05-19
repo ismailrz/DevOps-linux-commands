@@ -1,5 +1,11 @@
 # DevOps Linux Commands: The Complete Step-by-Step Guide for Engineers (2025)
 
+![GitHub stars](https://img.shields.io/github/stars/yourname/devops-linux-commands?style=social)
+![GitHub forks](https://img.shields.io/github/forks/yourname/devops-linux-commands?style=social)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-3fb950?logo=github)
+![License](https://img.shields.io/badge/License-MIT-58a6ff)
+![Commands](https://img.shields.io/badge/Commands-200%2B-d29922)
+
 > A production-ready reference of the most essential **Linux commands for DevOps engineers**, covering system monitoring, process management, networking, security, Docker, Git, shell scripting, and more — with deep explanations and real-world examples.
 
 ---
