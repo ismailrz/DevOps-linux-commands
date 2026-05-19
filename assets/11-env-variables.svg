@@ -1,0 +1,73 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Environment Variables &amp; Shell Configuration — export · .env · source</text>
+
+  <!-- Load order title -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● SHELL CONFIG LOAD ORDER (Login Shell)</text>
+
+  <!-- Layer 1: /etc/environment (bottom = widest scope) -->
+  <rect x="20" y="68" width="540" height="22" fill="#161b22" rx="3" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="82" fill="#8b949e" font-size="10">/etc/environment</text>
+  <text x="220" y="82" fill="#30363d" font-size="9">system-wide · parsed at login · NOT a shell script</text>
+
+  <!-- Layer 2: /etc/profile -->
+  <rect x="40" y="94" width="500" height="22" fill="#161b22" rx="3" stroke="#30363d" stroke-width="1"/>
+  <text x="50" y="108" fill="#8b949e" font-size="10">/etc/profile</text>
+  <text x="220" y="108" fill="#30363d" font-size="9">system-wide · login shells only</text>
+
+  <!-- Layer 3: /etc/profile.d/*.sh -->
+  <rect x="60" y="120" width="460" height="22" fill="#161b22" rx="3" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="134" fill="#8b949e" font-size="10">/etc/profile.d/*.sh</text>
+  <text x="220" y="134" fill="#30363d" font-size="9">sourced by /etc/profile · per-app env setup</text>
+
+  <!-- Layer 4: ~/.bash_profile -->
+  <rect x="80" y="146" width="420" height="22" fill="#161b22" rx="3" stroke="#d29922" stroke-width="1"/>
+  <text x="90" y="160" fill="#d29922" font-size="10">~/.bash_profile</text>
+  <text x="220" y="160" fill="#8b949e" font-size="9">per-user · login shells only</text>
+
+  <!-- Layer 5: ~/.bashrc (top = most specific) -->
+  <rect x="100" y="172" width="380" height="22" fill="#161b22" rx="3" stroke="#3fb950" stroke-width="2"/>
+  <text x="110" y="186" fill="#3fb950" font-size="10">~/.bashrc</text>
+  <text x="220" y="186" fill="#8b949e" font-size="9">per-user · interactive non-login shells ← most commonly edited</text>
+
+  <!-- Bracket and label -->
+  <line x1="575" y1="68" x2="590" y2="68" stroke="#58a6ff" stroke-width="1"/>
+  <line x1="590" y1="68" x2="590" y2="194" stroke="#58a6ff" stroke-width="1"/>
+  <line x1="575" y1="194" x2="590" y2="194" stroke="#58a6ff" stroke-width="1"/>
+  <text x="596" y="105" fill="#58a6ff" font-size="9">system</text>
+  <text x="596" y="115" fill="#58a6ff" font-size="9">→ user</text>
+  <text x="596" y="128" fill="#58a6ff" font-size="9">wide</text>
+  <text x="596" y="160" fill="#3fb950" font-size="9">user</text>
+  <text x="596" y="170" fill="#3fb950" font-size="9">specific</text>
+
+  <!-- Export / Variable box -->
+  <rect x="630" y="58" width="150" height="140" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="640" y="73" fill="#d29922" font-size="9">Key Patterns</text>
+  <line x1="635" y1="77" x2="775" y2="77" stroke="#30363d" stroke-width="1"/>
+  <text x="640" y="91" fill="#3fb950" font-size="9">export VAR=value</text>
+  <text x="640" y="103" fill="#8b949e" font-size="8">available to children</text>
+  <text x="640" y="118" fill="#3fb950" font-size="9">VAR=${VAR:-default}</text>
+  <text x="640" y="130" fill="#8b949e" font-size="8">safe default value</text>
+  <text x="640" y="145" fill="#3fb950" font-size="9">source ~/.bashrc</text>
+  <text x="640" y="157" fill="#8b949e" font-size="8">apply without logout</text>
+  <text x="640" y="172" fill="#3fb950" font-size="9">set -a; source .env</text>
+  <text x="640" y="184" fill="#8b949e" font-size="8">load .env file</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="204" x2="780" y2="204" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="224" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="224" fill="#3fb950" font-size="10">export DB_HOST=localhost</text>
+  <text x="210" y="224" fill="#30363d" font-size="10">|</text>
+  <text x="218" y="224" fill="#3fb950" font-size="10">printenv DB_HOST</text>
+  <text x="346" y="224" fill="#30363d" font-size="10">|</text>
+  <text x="354" y="224" fill="#3fb950" font-size="10">set -a; source .env; set +a</text>
+  <text x="546" y="224" fill="#30363d" font-size="10">|</text>
+  <text x="554" y="224" fill="#3fb950" font-size="10">envsubst &lt; config.tpl &gt; config.yaml</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: never commit .env files — add .env to .gitignore and use secrets managers in production</text>
+</svg>

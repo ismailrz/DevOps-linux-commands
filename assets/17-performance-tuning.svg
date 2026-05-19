@@ -1,0 +1,80 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Linux Performance Tuning — sysctl · ulimit · perf · kernel parameters</text>
+
+  <!-- Title -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● KEY KERNEL TUNING PARAMETERS (sysctl)</text>
+
+  <!-- Parameter cards -->
+  <!-- vm.swappiness -->
+  <rect x="20" y="70" width="175" height="70" fill="#161b22" rx="5" stroke="#58a6ff" stroke-width="1"/>
+  <text x="107" y="84" text-anchor="middle" fill="#58a6ff" font-size="9">vm.swappiness</text>
+  <rect x="30" y="90" width="155" height="10" fill="#21262d" rx="2"/>
+  <rect x="30" y="90" width="15" height="10" fill="#3fb950" rx="2"/>
+  <text x="107" y="100" text-anchor="middle" fill="#3fb950" font-size="8">10  (default: 60)</text>
+  <text x="107" y="112" text-anchor="middle" fill="#8b949e" font-size="8">0=never swap</text>
+  <text x="107" y="123" text-anchor="middle" fill="#8b949e" font-size="8">100=swap aggressively</text>
+  <text x="107" y="135" text-anchor="middle" fill="#3fb950" font-size="8">✓ set to 10 for app servers</text>
+
+  <!-- net.core.somaxconn -->
+  <rect x="210" y="70" width="175" height="70" fill="#161b22" rx="5" stroke="#3fb950" stroke-width="1"/>
+  <text x="297" y="84" text-anchor="middle" fill="#3fb950" font-size="9">net.core.somaxconn</text>
+  <rect x="220" y="90" width="155" height="10" fill="#21262d" rx="2"/>
+  <rect x="220" y="90" width="155" height="10" fill="#3fb950" rx="2"/>
+  <text x="297" y="100" text-anchor="middle" fill="#3fb950" font-size="8">65535  (default: 128)</text>
+  <text x="297" y="112" text-anchor="middle" fill="#8b949e" font-size="8">max TCP listen backlog</text>
+  <text x="297" y="123" text-anchor="middle" fill="#8b949e" font-size="8">↑ for high-traffic servers</text>
+  <text x="297" y="135" text-anchor="middle" fill="#3fb950" font-size="8">✓ critical for nginx/redis</text>
+
+  <!-- fs.file-max -->
+  <rect x="400" y="70" width="175" height="70" fill="#161b22" rx="5" stroke="#d29922" stroke-width="1"/>
+  <text x="487" y="84" text-anchor="middle" fill="#d29922" font-size="9">fs.file-max</text>
+  <rect x="410" y="90" width="155" height="10" fill="#21262d" rx="2"/>
+  <rect x="410" y="90" width="148" height="10" fill="#d29922" rx="2"/>
+  <text x="487" y="100" text-anchor="middle" fill="#d29922" font-size="8">2097152</text>
+  <text x="487" y="112" text-anchor="middle" fill="#8b949e" font-size="8">max open file descriptors</text>
+  <text x="487" y="123" text-anchor="middle" fill="#8b949e" font-size="8">↑ for busy web servers</text>
+  <text x="487" y="135" text-anchor="middle" fill="#d29922" font-size="8">check: ulimit -n</text>
+
+  <!-- net.ipv4.tcp_tw_reuse -->
+  <rect x="590" y="70" width="190" height="70" fill="#161b22" rx="5" stroke="#bc8cff" stroke-width="1"/>
+  <text x="685" y="84" text-anchor="middle" fill="#bc8cff" font-size="9">tcp_tw_reuse</text>
+  <rect x="600" y="90" width="170" height="10" fill="#21262d" rx="2"/>
+  <rect x="600" y="90" width="10" height="10" fill="#bc8cff" rx="2"/>
+  <text x="685" y="100" text-anchor="middle" fill="#bc8cff" font-size="8">1  (default: 0)</text>
+  <text x="685" y="112" text-anchor="middle" fill="#8b949e" font-size="8">reuse TIME_WAIT sockets</text>
+  <text x="685" y="123" text-anchor="middle" fill="#8b949e" font-size="8">for high outbound conn rate</text>
+  <text x="685" y="135" text-anchor="middle" fill="#bc8cff" font-size="8">+ ip_local_port_range</text>
+
+  <!-- How to apply -->
+  <text x="20" y="158" fill="#d29922" font-size="11" font-weight="bold">● HOW TO APPLY PERMANENTLY</text>
+  <rect x="20" y="164" width="490" height="36" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="179" fill="#3fb950" font-size="9">echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.d/99-tuning.conf</text>
+  <text x="30" y="193" fill="#3fb950" font-size="9">sudo sysctl -p /etc/sysctl.d/99-tuning.conf     # apply without reboot</text>
+
+  <!-- ulimit -->
+  <rect x="524" y="158" width="256" height="48" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="534" y="173" fill="#58a6ff" font-size="9">ulimit -n 65535            # temporary</text>
+  <text x="534" y="186" fill="#58a6ff" font-size="9">/etc/security/limits.conf  # permanent</text>
+  <text x="534" y="199" fill="#8b949e" font-size="8">deploy soft nofile 65535</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="214" x2="780" y2="214" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="233" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="233" fill="#3fb950" font-size="10">sysctl vm.swappiness</text>
+  <text x="188" y="233" fill="#30363d" font-size="10">|</text>
+  <text x="196" y="233" fill="#3fb950" font-size="10">sysctl -w vm.swappiness=10</text>
+  <text x="380" y="233" fill="#30363d" font-size="10">|</text>
+  <text x="388" y="233" fill="#3fb950" font-size="10">ulimit -a</text>
+  <text x="450" y="233" fill="#30363d" font-size="10">|</text>
+  <text x="458" y="233" fill="#3fb950" font-size="10">perf stat ./my-app</text>
+  <text x="580" y="233" fill="#30363d" font-size="10">|</text>
+  <text x="588" y="233" fill="#3fb950" font-size="10">perf record -g -a -- sleep 10</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: changes via sysctl -w are temporary — always persist to /etc/sysctl.d/ for reboot survival</text>
+</svg>

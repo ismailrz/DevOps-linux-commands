@@ -1,0 +1,87 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">User &amp; Permission Management — chmod · chown · useradd · sudo</text>
+
+  <!-- File line -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● PERMISSION STRING BREAKDOWN</text>
+  <text x="20" y="82" fill="#e6edf3" font-size="13">-  r w x  r w -  r - -   1   deploy   www-data   4096  Jan 1  server.sh</text>
+
+  <!-- Segment underlines and labels -->
+  <!-- file type -->
+  <rect x="20" y="86" width="10" height="3" fill="#8b949e" rx="1"/>
+  <text x="25" y="106" text-anchor="middle" fill="#8b949e" font-size="9">type</text>
+  <text x="25" y="116" text-anchor="middle" fill="#8b949e" font-size="8">- file</text>
+  <text x="25" y="124" text-anchor="middle" fill="#8b949e" font-size="8">d dir</text>
+  <text x="25" y="132" text-anchor="middle" fill="#8b949e" font-size="8">l link</text>
+
+  <!-- owner rwx -->
+  <rect x="38" y="86" width="47" height="3" fill="#58a6ff" rx="1"/>
+  <text x="62" y="106" text-anchor="middle" fill="#58a6ff" font-size="9">owner</text>
+  <text x="62" y="117" text-anchor="middle" fill="#58a6ff" font-size="9">r=4</text>
+  <text x="62" y="128" text-anchor="middle" fill="#58a6ff" font-size="9">w=2</text>
+  <text x="62" y="139" text-anchor="middle" fill="#58a6ff" font-size="9">x=1</text>
+  <text x="62" y="150" text-anchor="middle" fill="#58a6ff" font-size="9">= 7</text>
+
+  <!-- group rw- -->
+  <rect x="93" y="86" width="47" height="3" fill="#3fb950" rx="1"/>
+  <text x="117" y="106" text-anchor="middle" fill="#3fb950" font-size="9">group</text>
+  <text x="117" y="117" text-anchor="middle" fill="#3fb950" font-size="9">r=4</text>
+  <text x="117" y="128" text-anchor="middle" fill="#3fb950" font-size="9">w=2</text>
+  <text x="117" y="139" text-anchor="middle" fill="#3fb950" font-size="9">-=0</text>
+  <text x="117" y="150" text-anchor="middle" fill="#3fb950" font-size="9">= 6</text>
+
+  <!-- others r-- -->
+  <rect x="148" y="86" width="47" height="3" fill="#d29922" rx="1"/>
+  <text x="172" y="106" text-anchor="middle" fill="#d29922" font-size="9">others</text>
+  <text x="172" y="117" text-anchor="middle" fill="#d29922" font-size="9">r=4</text>
+  <text x="172" y="128" text-anchor="middle" fill="#d29922" font-size="9">-=0</text>
+  <text x="172" y="139" text-anchor="middle" fill="#d29922" font-size="9">-=0</text>
+  <text x="172" y="150" text-anchor="middle" fill="#d29922" font-size="9">= 4</text>
+
+  <!-- Combined octal -->
+  <text x="230" y="110" fill="#8b949e" font-size="10">→ octal:</text>
+  <rect x="287" y="98" width="60" height="22" fill="#161b22" rx="4" stroke="#58a6ff" stroke-width="1"/>
+  <text x="317" y="113" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold">764</text>
+  <text x="230" y="130" fill="#8b949e" font-size="9">owner=7(rwx)</text>
+  <text x="230" y="142" fill="#8b949e" font-size="9">group=6(rw-)</text>
+  <text x="230" y="154" fill="#8b949e" font-size="9">others=4(r--)</text>
+
+  <!-- Common octal table -->
+  <text x="400" y="62" fill="#bc8cff" font-size="11" font-weight="bold">● COMMON OCTAL VALUES</text>
+  <rect x="400" y="68" width="380" height="110" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="415" y="85" fill="#8b949e" font-size="10">Octal   Symbolic    Typical Use</text>
+  <line x1="405" y1="90" x2="775" y2="90" stroke="#30363d" stroke-width="1"/>
+  <text x="415" y="104" fill="#3fb950" font-size="10">755</text>
+  <text x="455" y="104" fill="#e6edf3" font-size="10">rwxr-xr-x</text>
+  <text x="560" y="104" fill="#8b949e" font-size="10">executables, web dirs</text>
+  <text x="415" y="119" fill="#3fb950" font-size="10">644</text>
+  <text x="455" y="119" fill="#e6edf3" font-size="10">rw-r--r--</text>
+  <text x="560" y="119" fill="#8b949e" font-size="10">config files, source code</text>
+  <text x="415" y="134" fill="#d29922" font-size="10">600</text>
+  <text x="455" y="134" fill="#e6edf3" font-size="10">rw-------</text>
+  <text x="560" y="134" fill="#8b949e" font-size="10">SSH keys, .env secrets</text>
+  <text x="415" y="149" fill="#d29922" font-size="10">700</text>
+  <text x="455" y="149" fill="#e6edf3" font-size="10">rwx------</text>
+  <text x="560" y="149" fill="#8b949e" font-size="10">private directories</text>
+  <text x="415" y="164" fill="#f85149" font-size="10">777</text>
+  <text x="455" y="164" fill="#e6edf3" font-size="10">rwxrwxrwx</text>
+  <text x="560" y="164" fill="#8b949e" font-size="10">avoid on production ⚠</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="192" x2="780" y2="192" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="212" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="212" fill="#3fb950" font-size="10">chmod 755 script.sh</text>
+  <text x="178" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="186" y="212" fill="#3fb950" font-size="10">chmod 600 ~/.ssh/id_rsa</text>
+  <text x="358" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="366" y="212" fill="#3fb950" font-size="10">chown deploy:www-data /app</text>
+  <text x="560" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="568" y="212" fill="#3fb950" font-size="10">useradd -m -s /bin/bash user</text>
+  <text x="20" y="242" fill="#8b949e" font-size="10">Special bits:  u+s SUID (run as owner)  ·  g+s SGID (inherit group)  ·  +t sticky (only owner can delete)</text>
+</svg>

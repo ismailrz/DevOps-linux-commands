@@ -1,0 +1,92 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">systemd Service Management — systemctl · journalctl · unit files</text>
+
+  <!-- State Machine Title -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● SERVICE LIFECYCLE STATE MACHINE</text>
+
+  <!-- inactive -->
+  <rect x="20" y="72" width="90" height="32" fill="#161b22" rx="5" stroke="#8b949e" stroke-width="1"/>
+  <text x="65" y="88" text-anchor="middle" fill="#8b949e" font-size="10">inactive</text>
+  <text x="65" y="100" text-anchor="middle" fill="#8b949e" font-size="8">stopped</text>
+
+  <!-- inactive → activating -->
+  <line x1="110" y1="88" x2="178" y2="88" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="178,84 186,88 178,92" fill="#3fb950"/>
+  <text x="144" y="82" text-anchor="middle" fill="#3fb950" font-size="8">start</text>
+
+  <!-- activating -->
+  <rect x="186" y="72" width="90" height="32" fill="#161b22" rx="5" stroke="#d29922" stroke-width="2"/>
+  <text x="231" y="88" text-anchor="middle" fill="#d29922" font-size="10">activating</text>
+  <text x="231" y="100" text-anchor="middle" fill="#d29922" font-size="8">starting up</text>
+
+  <!-- activating → active -->
+  <line x1="276" y1="88" x2="344" y2="88" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="344,84 352,88 344,92" fill="#3fb950"/>
+  <text x="310" y="82" text-anchor="middle" fill="#3fb950" font-size="8">ready</text>
+
+  <!-- active -->
+  <rect x="352" y="72" width="90" height="32" fill="#0d3320" rx="5" stroke="#3fb950" stroke-width="2"/>
+  <text x="397" y="88" text-anchor="middle" fill="#3fb950" font-size="10">● active</text>
+  <text x="397" y="100" text-anchor="middle" fill="#3fb950" font-size="8">running</text>
+
+  <!-- active → deactivating -->
+  <line x1="442" y1="88" x2="510" y2="88" stroke="#d29922" stroke-width="1.5"/>
+  <polygon points="510,84 518,88 510,92" fill="#d29922"/>
+  <text x="476" y="82" text-anchor="middle" fill="#d29922" font-size="8">stop</text>
+
+  <!-- deactivating -->
+  <rect x="518" y="72" width="100" height="32" fill="#161b22" rx="5" stroke="#d29922" stroke-width="2"/>
+  <text x="568" y="88" text-anchor="middle" fill="#d29922" font-size="10">deactivating</text>
+  <text x="568" y="100" text-anchor="middle" fill="#d29922" font-size="8">stopping</text>
+
+  <!-- deactivating → inactive -->
+  <line x1="618" y1="88" x2="686" y2="88" stroke="#8b949e" stroke-width="1.5"/>
+  <polygon points="686,84 694,88 686,92" fill="#8b949e"/>
+
+  <!-- inactive (right) -->
+  <rect x="694" y="72" width="86" height="32" fill="#161b22" rx="5" stroke="#8b949e" stroke-width="1"/>
+  <text x="737" y="88" text-anchor="middle" fill="#8b949e" font-size="10">inactive</text>
+  <text x="737" y="100" text-anchor="middle" fill="#8b949e" font-size="8">stopped</text>
+
+  <!-- failure branch -->
+  <line x1="231" y1="104" x2="231" y2="130" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4"/>
+  <polygon points="227,130 231,138 235,130" fill="#f85149"/>
+  <text x="280" y="130" fill="#f85149" font-size="8">ExecStart fails</text>
+
+  <!-- failed box -->
+  <rect x="175" y="138" width="90" height="28" fill="#2d1010" rx="5" stroke="#f85149" stroke-width="2"/>
+  <text x="220" y="152" text-anchor="middle" fill="#f85149" font-size="10">failed</text>
+  <text x="220" y="162" text-anchor="middle" fill="#8b949e" font-size="8">needs reset</text>
+
+  <!-- failed → inactive via reset-failed -->
+  <line x1="265" y1="152" x2="335" y2="152" stroke="#8b949e" stroke-width="1" stroke-dasharray="4"/>
+  <polygon points="335,148 343,152 335,156" fill="#8b949e"/>
+  <text x="300" y="144" text-anchor="middle" fill="#8b949e" font-size="8">reset-failed</text>
+  <rect x="343" y="138" width="90" height="28" fill="#161b22" rx="5" stroke="#8b949e" stroke-width="1"/>
+  <text x="388" y="155" text-anchor="middle" fill="#8b949e" font-size="9">inactive</text>
+
+  <!-- Commands grid -->
+  <rect x="465" y="130" width="310" height="52" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="475" y="146" fill="#3fb950" font-size="9">systemctl start|stop|restart nginx</text>
+  <text x="475" y="159" fill="#3fb950" font-size="9">systemctl enable --now nginx</text>
+  <text x="475" y="172" fill="#3fb950" font-size="9">systemctl reload nginx</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="196" x2="780" y2="196" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="215" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="215" fill="#3fb950" font-size="10">systemctl status nginx</text>
+  <text x="196" y="215" fill="#30363d" font-size="10">|</text>
+  <text x="204" y="215" fill="#3fb950" font-size="10">systemctl --failed</text>
+  <text x="344" y="215" fill="#30363d" font-size="10">|</text>
+  <text x="352" y="215" fill="#3fb950" font-size="10">journalctl -u nginx -f</text>
+  <text x="520" y="215" fill="#30363d" font-size="10">|</text>
+  <text x="528" y="215" fill="#3fb950" font-size="10">systemctl daemon-reload</text>
+  <text x="20" y="245" fill="#8b949e" font-size="10">Tip: use reload over restart when possible — reload applies config with zero downtime</text>
+</svg>

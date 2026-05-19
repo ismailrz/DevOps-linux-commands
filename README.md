@@ -32,10 +32,13 @@ This guide covers the most important **Linux commands used in DevOps workflows**
 16. [Linux Security & Server Hardening Commands](#16-linux-security--server-hardening-commands)
 17. [Linux Performance Tuning Commands](#17-linux-performance-tuning-commands)
 18. [Frequently Asked Questions](#18-frequently-asked-questions)
+19. [DevOps Linux Commands Quick Reference Card](#devops-linux-commands-quick-reference-card)
 
 ---
 
 ## 1. System Monitoring & Performance Commands
+
+![System Monitoring & Performance Commands — CPU, memory, load average, iostat, vmstat](assets/01-system-monitoring.svg)
 
 Monitoring your Linux system's health in real time is a foundational DevOps skill. These commands help you identify CPU bottlenecks, memory pressure, and disk I/O issues before they escalate into production incidents.
 
@@ -214,7 +217,46 @@ sar -u -f /var/log/sysstat/sa20    # data from the 20th of the month
 
 ---
 
+### `uname` / `uptime` / `hostname` — Linux System Identity Commands
+
+![uname uptime hostname — Linux system identity commands output](assets/01b-system-identity.svg)
+
+These one-liners are the fastest way to get basic facts about a server — essential at the start of any debugging session on an unfamiliar machine.
+
+```bash
+# Show kernel version, architecture, and OS
+uname -a
+
+# Show only the kernel version
+uname -r
+
+# Show only the machine hardware architecture (x86_64, arm64, etc.)
+uname -m
+
+# Show how long the system has been running and load average
+uptime
+
+# Show the server's hostname
+hostname
+
+# Show the server's FQDN (fully qualified domain name)
+hostname -f
+
+# Show all IP addresses assigned to this host
+hostname -I
+
+# Show OS name and version (works on most distros)
+cat /etc/os-release
+
+# Show kernel and distribution info together
+uname -r && cat /etc/os-release | grep PRETTY_NAME
+```
+
+---
+
 ## 2. Linux Process Management Commands
+
+![Linux Process Management Commands — ps, kill, nice, strace, lsof, process tree](assets/02-process-management.svg)
 
 Managing processes is a core Linux skill for DevOps. These commands let you find, inspect, prioritize, and control any process running on your system.
 
@@ -407,6 +449,8 @@ lsof | grep deleted
 
 ## 3. Disk & Filesystem Management Commands
 
+![Disk & Filesystem Management Commands — df, du, mount, fdisk, partition layout](assets/03-disk-filesystem.svg)
+
 Running out of disk space is one of the most common production incidents. These Linux disk management commands help you monitor, manage, and troubleshoot storage.
 
 ---
@@ -553,6 +597,8 @@ find /etc/nginx -type l
 
 ## 4. Network Diagnostics & Configuration Commands
 
+![Network Diagnostics & Configuration Commands — ip, ss, ping, curl, dig, tcpdump, iptables](assets/04-network-diagnostics.svg)
+
 Networking is at the heart of every distributed system. These Linux network commands let you configure interfaces, diagnose connectivity issues, inspect traffic, and manage firewalls.
 
 ---
@@ -681,6 +727,47 @@ curl -F "file=@/path/to/file.txt" https://example.com/upload
 
 ---
 
+### `wget` — Linux Non-Interactive File Download Command
+
+![wget — Linux non-interactive file download command with progress, resume, retry](assets/04b-wget.svg)
+
+`wget` is the go-to command for downloading files from the terminal, especially in scripts where `curl` is unavailable or when you need robust resumable downloads.
+
+```bash
+# Download a file to the current directory
+wget https://example.com/archive.tar.gz
+
+# Download and save with a custom filename
+wget -O myfile.tar.gz https://example.com/archive.tar.gz
+
+# Resume an interrupted download
+wget -c https://example.com/large-file.iso
+
+# Download in the background (useful in scripts)
+wget -b https://example.com/large-file.iso
+
+# Download quietly (no progress bar — useful in scripts)
+wget -q https://example.com/file.txt
+
+# Mirror an entire website
+wget --mirror --convert-links https://docs.example.com
+
+# Download with a retry limit
+wget --tries=5 https://example.com/file.txt
+
+# Download with a timeout
+wget --timeout=30 https://example.com/file.txt
+
+# Check if a URL is reachable (spider mode — no download)
+wget --spider https://example.com/healthz
+```
+
+**`wget` vs `curl`:**
+- `wget` is better for downloading files — it supports recursive downloads and resuming out of the box
+- `curl` is better for API testing — it supports more protocols, custom headers, and shows HTTP status codes easily
+
+---
+
 ### `dig` — Linux DNS Lookup Command
 
 ```bash
@@ -777,6 +864,8 @@ sudo tcpdump -i eth0 'tcp[tcpflags] & (tcp-syn) != 0'
 ---
 
 ## 5. User & Permission Management Commands
+
+![User & Permission Management Commands — chmod, chown, useradd, sudo, rwx breakdown](assets/05-user-permissions.svg)
 
 Proper Linux user and permission management is critical for security, compliance, and multi-tenant server environments.
 
@@ -918,6 +1007,8 @@ sudo cat /var/log/auth.log | grep sudo
 
 ## 6. Linux Package Management Commands
 
+![Linux Package Management Commands — apt, yum, dnf, dpkg, rpm workflow](assets/06-package-management.svg)
+
 Package managers are how you install, update, and remove software on Linux servers. The right commands and workflow keep your servers patched and secure.
 
 ---
@@ -1001,6 +1092,8 @@ yum repolist
 ---
 
 ## 7. systemd Service Management Commands
+
+![systemd Service Management Commands — systemctl lifecycle state machine, unit files](assets/07-systemd-services.svg)
 
 `systemd` is the init system and service manager for virtually all modern Linux distributions. Mastering `systemctl` is essential for managing daemons and services in production.
 
@@ -1113,6 +1206,8 @@ sudo systemctl enable --now myapp
 ---
 
 ## 8. Log Management Commands for DevOps
+
+![Log Management Commands for DevOps — journalctl, tail, grep, awk, logrotate pipeline](assets/08-log-management.svg)
 
 Logs are your primary diagnostic tool in production. Every DevOps engineer must be comfortable navigating, searching, and managing Linux logs at scale.
 
@@ -1241,6 +1336,8 @@ sudo logrotate --force /etc/logrotate.d/myapp
 
 ## 9. File Operations & Text Processing Commands
 
+![File Operations & Text Processing Commands — find, grep, sed, awk, tar pipeline](assets/09-file-operations.svg)
+
 These Linux commands are used daily for searching codebases, transforming configuration files, building deployment scripts, and processing log data.
 
 ---
@@ -1346,6 +1443,60 @@ awk '/START/,/END/' logfile.txt
 
 ---
 
+### `xargs` — Build and Execute Commands from Standard Input
+
+![xargs — pipeline flow, parallel execution, null-safe patterns](assets/09b-xargs.svg)
+
+`xargs` reads items from stdin and passes them as arguments to a command. It is the glue that makes Unix pipelines powerful — especially when combining `find` with other commands.
+
+```bash
+# Delete all .tmp files found by find (safer than -exec for large sets)
+find /tmp -name "*.tmp" | xargs rm -f
+
+# Parallel execution — run 4 jobs simultaneously
+find /var/log -name "*.log" | xargs -P 4 -I {} gzip {}
+
+# -I {} replaces {} with each input item
+echo "web-01 web-02 web-03" | tr ' ' '\n' | xargs -I {} ssh deploy@{} "systemctl restart app"
+
+# Pass multiple items per command invocation (-n)
+echo "a b c d e f" | tr ' ' '\n' | xargs -n 2 echo
+# Output: a b / c d / e f
+
+# Prompt before each execution (-p for safety)
+find . -name "*.bak" | xargs -p rm
+
+# Handle filenames with spaces (pair with find -print0)
+find /var/www -name "*.log" -print0 | xargs -0 rm -f
+```
+
+---
+
+### `tee` — Write to stdout and File Simultaneously
+
+![tee — fork stdout to screen and file simultaneously, sudo tee pattern](assets/09c-tee.svg)
+
+`tee` reads from stdin and writes to both stdout and one or more files at the same time — essential for logging command output while still seeing it on screen.
+
+```bash
+# Write output to both screen and a log file
+./deploy.sh | tee deploy.log
+
+# Append to an existing log file (don't overwrite)
+./deploy.sh | tee -a deploy.log
+
+# Write to multiple files at once
+./build.sh | tee build.log build-$(date +%Y%m%d).log
+
+# Use with sudo to write to privileged files
+echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/99-tuning.conf
+
+# Capture stderr as well
+./deploy.sh 2>&1 | tee deploy.log
+```
+
+---
+
 ### `tar` — Linux Archive and Compression Command
 
 ```bash
@@ -1383,6 +1534,8 @@ tar -czvf backup.tar.gz --newer-mtime="2024-01-15" /var/www
 ---
 
 ## 10. SSH & Secure Remote Access Commands
+
+![SSH & Secure Remote Access Commands — ssh tunnel, bastion, ProxyJump, scp, rsync](assets/10-ssh-remote-access.svg)
 
 SSH is the primary tool for securely accessing remote Linux servers. These SSH commands and configuration patterns are used daily in DevOps workflows.
 
@@ -1523,7 +1676,57 @@ rsync -avz --bwlimit=5000 /data/ user@hostname:/backup/    # 5 MB/s limit
 
 ---
 
+### `tmux` — Terminal Multiplexer for Persistent Remote Sessions
+
+![tmux — session persistence after SSH disconnect, windows, panes, key bindings](assets/10b-tmux.svg)
+
+`tmux` lets you run multiple terminal sessions inside a single SSH connection, and crucially, **sessions persist after you disconnect** — unlike plain SSH where closing the terminal kills everything.
+
+```bash
+# Install tmux
+sudo apt install tmux
+
+# Start a new named session
+tmux new -s deploy
+
+# List all active sessions
+tmux ls
+
+# Attach to an existing session
+tmux attach -t deploy
+tmux a -t deploy          # shorthand
+
+# Detach from the current session (session keeps running)
+Ctrl+b  d
+
+# Create a new window inside a session
+Ctrl+b  c
+
+# Switch between windows
+Ctrl+b  n    # next window
+Ctrl+b  p    # previous window
+Ctrl+b  0-9  # jump to window by number
+
+# Split the current pane horizontally
+Ctrl+b  "
+
+# Split the current pane vertically
+Ctrl+b  %
+
+# Kill the current session
+tmux kill-session -t deploy
+
+# Run a long command inside a named tmux session (scriptable)
+tmux new -d -s backup "/opt/scripts/backup.sh && echo done"
+```
+
+> **DevOps use case:** Start a `tmux` session before kicking off long operations (database migrations, large file transfers, rolling deploys). If your SSH connection drops, the session and all its processes keep running — just `tmux attach` to resume.
+
+---
+
 ## 11. Environment Variables & Shell Configuration
+
+![Environment Variables & Shell Configuration — export, .env, shell config load order](assets/11-env-variables.svg)
 
 Environment variables control how processes behave and how deployment configurations are passed securely without hardcoding values.
 
@@ -1603,6 +1806,8 @@ env $(cat .env | grep -v '^#' | xargs) ./myapp
 ---
 
 ## 12. Cron Jobs & Linux Task Scheduling
+
+![Cron Jobs & Linux Task Scheduling — crontab, cron expression anatomy, at command](assets/12-cron-jobs.svg)
 
 Cron is the standard Linux job scheduler for automating recurring tasks such as backups, log cleanup, report generation, and health checks.
 
@@ -1700,6 +1905,8 @@ atrm 5
 ---
 
 ## 13. Docker & Container Management Commands
+
+![Docker & Container Management Commands — image layers, build, run, compose, exec](assets/13-docker-containers.svg)
 
 Container management is a core competency for modern DevOps engineers. These Docker commands cover the complete container lifecycle from image building to production monitoring.
 
@@ -1880,7 +2087,66 @@ docker compose restart web
 
 ---
 
+### `kubectl` — Kubernetes Cluster Management Commands
+
+![kubectl — Kubernetes cluster architecture, pods, deployments, rollouts, exec](assets/13b-kubectl.svg)
+
+`kubectl` is the primary CLI for interacting with Kubernetes clusters. It works hand-in-hand with Docker — Docker builds images, Kubernetes runs them at scale.
+
+```bash
+# Check cluster connection and node status
+kubectl cluster-info
+kubectl get nodes
+kubectl get nodes -o wide    # includes IP, OS, kernel version
+
+# Namespaces
+kubectl get namespaces
+kubectl config set-context --current --namespace=production
+
+# Pods
+kubectl get pods
+kubectl get pods -n kube-system          # in a specific namespace
+kubectl get pods --all-namespaces        # across all namespaces
+kubectl describe pod my-pod              # full details including events
+kubectl logs my-pod                      # stdout logs
+kubectl logs -f my-pod                   # stream logs live
+kubectl logs my-pod -c container-name    # specific container in pod
+
+# Execute a command inside a running pod
+kubectl exec -it my-pod -- bash
+kubectl exec -it my-pod -- sh            # if bash not available
+
+# Deployments
+kubectl get deployments
+kubectl rollout status deployment/my-app
+kubectl rollout history deployment/my-app
+kubectl rollout undo deployment/my-app          # roll back to previous version
+kubectl scale deployment my-app --replicas=5   # scale up/down
+
+# Apply / delete resources from YAML manifests
+kubectl apply -f deployment.yaml
+kubectl delete -f deployment.yaml
+kubectl apply -k ./overlays/production         # kustomize
+
+# Services and networking
+kubectl get services
+kubectl port-forward pod/my-pod 8080:8080      # forward pod port to localhost
+
+# ConfigMaps and Secrets
+kubectl get configmaps
+kubectl get secrets
+kubectl describe secret my-secret
+
+# Useful context management (switching clusters)
+kubectl config get-contexts
+kubectl config use-context production-cluster
+```
+
+---
+
 ## 14. Git Commands for DevOps Engineers
+
+![Git Commands for DevOps Engineers — branch graph, merge, rebase, tag, cherry-pick](assets/14-git-devops.svg)
 
 Git is the source of truth for all code, configuration, and infrastructure definitions. These Git commands cover everything from daily feature work to release management and incident recovery.
 
@@ -1990,6 +2256,8 @@ git clean -fd     # actually remove untracked files and directories
 ---
 
 ## 15. Bash Shell Scripting for DevOps
+
+![Bash Shell Scripting for DevOps — safety flags, trap, functions, loops, error handling](assets/15-shell-scripting.svg)
 
 Shell scripting automates repetitive tasks, deployment pipelines, health checks, and system maintenance. These patterns form the foundation of production-grade DevOps scripts.
 
@@ -2151,6 +2419,8 @@ retry 3 5 curl --fail https://api.example.com/health
 
 ## 16. Linux Security & Server Hardening Commands
 
+![Linux Security & Server Hardening Commands — fail2ban, iptables, openssl, auditd defense layers](assets/16-security-hardening.svg)
+
 Security is a first-class concern in DevOps. These commands help you monitor for intrusions, manage TLS certificates, audit system activity, and harden your Linux servers.
 
 ---
@@ -2239,6 +2509,8 @@ sudo aureport --failed           # all failed events
 ---
 
 ## 17. Linux Performance Tuning Commands
+
+![Linux Performance Tuning Commands — sysctl, ulimit, perf, kernel parameters](assets/17-performance-tuning.svg)
 
 Production Linux systems often need kernel-level tuning to handle high traffic, large numbers of connections, or heavy I/O workloads.
 

@@ -1,0 +1,77 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Package Management — apt · yum · dnf · dpkg · rpm</text>
+
+  <!-- APT Flow -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● APT WORKFLOW (Debian / Ubuntu)</text>
+
+  <!-- Step 1: Repository -->
+  <rect x="20" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="86" text-anchor="middle" fill="#8b949e" font-size="9">📦 Repository</text>
+  <text x="70" y="98" text-anchor="middle" fill="#8b949e" font-size="8">/etc/apt/sources.list</text>
+  <line x1="120" y1="88" x2="150" y2="88" stroke="#58a6ff" stroke-width="1.5"/>
+  <polygon points="150,84 158,88 150,92" fill="#58a6ff"/>
+
+  <!-- Step 2: apt update -->
+  <rect x="158" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#58a6ff" stroke-width="1"/>
+  <text x="208" y="86" text-anchor="middle" fill="#58a6ff" font-size="9">apt update</text>
+  <text x="208" y="98" text-anchor="middle" fill="#8b949e" font-size="8">refresh index</text>
+  <line x1="258" y1="88" x2="288" y2="88" stroke="#58a6ff" stroke-width="1.5"/>
+  <polygon points="288,84 296,88 288,92" fill="#58a6ff"/>
+
+  <!-- Step 3: apt install -->
+  <rect x="296" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#3fb950" stroke-width="1"/>
+  <text x="346" y="86" text-anchor="middle" fill="#3fb950" font-size="9">apt install</text>
+  <text x="346" y="98" text-anchor="middle" fill="#8b949e" font-size="8">nginx redis</text>
+  <line x1="396" y1="88" x2="426" y2="88" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="426,84 434,88 426,92" fill="#3fb950"/>
+
+  <!-- Step 4: dpkg -->
+  <rect x="434" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#3fb950" stroke-width="1"/>
+  <text x="484" y="86" text-anchor="middle" fill="#3fb950" font-size="9">dpkg -i</text>
+  <text x="484" y="98" text-anchor="middle" fill="#8b949e" font-size="8">installed pkg</text>
+  <line x1="534" y1="88" x2="564" y2="88" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="564,84 572,88 564,92" fill="#3fb950"/>
+
+  <!-- Step 5: Running -->
+  <rect x="572" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#d29922" stroke-width="1"/>
+  <text x="622" y="86" text-anchor="middle" fill="#d29922" font-size="9">🟢 Running</text>
+  <text x="622" y="98" text-anchor="middle" fill="#8b949e" font-size="8">systemctl start</text>
+
+  <!-- APT key commands -->
+  <rect x="20" y="118" width="360" height="56" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="133" fill="#58a6ff" font-size="10">apt update</text>
+  <text x="140" y="133" fill="#8b949e" font-size="10">refresh package index</text>
+  <text x="30" y="148" fill="#3fb950" font-size="10">apt install nginx</text>
+  <text x="140" y="148" fill="#8b949e" font-size="10">install a package</text>
+  <text x="30" y="163" fill="#f85149" font-size="10">apt purge nginx</text>
+  <text x="140" y="163" fill="#8b949e" font-size="10">remove + delete config</text>
+
+  <!-- YUM/DNF section -->
+  <text x="400" y="118" fill="#d29922" font-size="11" font-weight="bold">● YUM / DNF (RHEL / CentOS)</text>
+  <rect x="400" y="124" width="375" height="56" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="410" y="139" fill="#d29922" font-size="10">dnf update</text>
+  <text x="510" y="139" fill="#8b949e" font-size="10">update all packages</text>
+  <text x="410" y="154" fill="#d29922" font-size="10">dnf install nginx</text>
+  <text x="510" y="154" fill="#8b949e" font-size="10">install a package</text>
+  <text x="410" y="169" fill="#d29922" font-size="10">rpm -qf /usr/sbin/nginx</text>
+  <text x="510" y="169" fill="#8b949e" font-size="10">which package owns file</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="192" x2="780" y2="192" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="212" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="212" fill="#3fb950" font-size="10">apt update &amp;&amp; apt upgrade</text>
+  <text x="210" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="218" y="212" fill="#3fb950" font-size="10">apt install -y nginx</text>
+  <text x="356" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="364" y="212" fill="#3fb950" font-size="10">apt-mark hold nginx</text>
+  <text x="502" y="212" fill="#30363d" font-size="10">|</text>
+  <text x="510" y="212" fill="#3fb950" font-size="10">dpkg -S /usr/bin/curl</text>
+  <text x="20" y="242" fill="#8b949e" font-size="10">Tip: apt-mark hold &lt;pkg&gt; prevents a package from being upgraded (e.g. hold nginx version for stability)</text>
+</svg>

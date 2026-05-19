@@ -1,0 +1,89 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Cron Jobs &amp; Task Scheduling — crontab · cron expressions · at</text>
+
+  <!-- Cron expression breakdown -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● CRON EXPRESSION ANATOMY</text>
+
+  <!-- Full expression -->
+  <text x="20" y="85" fill="#e6edf3" font-size="16"> 30   2   *   *   1-5   /opt/backup.sh</text>
+
+  <!-- Field highlight boxes -->
+  <rect x="20" y="90" width="28" height="4" fill="#58a6ff" rx="1"/>
+  <rect x="58" y="90" width="18" height="4" fill="#3fb950" rx="1"/>
+  <rect x="86" y="90" width="14" height="4" fill="#d29922" rx="1"/>
+  <rect x="110" y="90" width="14" height="4" fill="#bc8cff" rx="1"/>
+  <rect x="134" y="90" width="36" height="4" fill="#f85149" rx="1"/>
+  <rect x="182" y="90" width="110" height="4" fill="#8b949e" rx="1"/>
+
+  <!-- Labels below -->
+  <text x="34" y="115" text-anchor="middle" fill="#58a6ff" font-size="10">minute</text>
+  <text x="34" y="127" text-anchor="middle" fill="#58a6ff" font-size="9">0–59</text>
+  <text x="34" y="139" text-anchor="middle" fill="#58a6ff" font-size="12">30</text>
+
+  <text x="67" y="115" text-anchor="middle" fill="#3fb950" font-size="10">hour</text>
+  <text x="67" y="127" text-anchor="middle" fill="#3fb950" font-size="9">0–23</text>
+  <text x="67" y="139" text-anchor="middle" fill="#3fb950" font-size="12">2</text>
+
+  <text x="93" y="115" text-anchor="middle" fill="#d29922" font-size="10">day</text>
+  <text x="93" y="127" text-anchor="middle" fill="#d29922" font-size="9">1–31</text>
+  <text x="93" y="139" text-anchor="middle" fill="#d29922" font-size="12">*</text>
+
+  <text x="117" y="115" text-anchor="middle" fill="#bc8cff" font-size="10">month</text>
+  <text x="117" y="127" text-anchor="middle" fill="#bc8cff" font-size="9">1–12</text>
+  <text x="117" y="139" text-anchor="middle" fill="#bc8cff" font-size="12">*</text>
+
+  <text x="152" y="115" text-anchor="middle" fill="#f85149" font-size="10">weekday</text>
+  <text x="152" y="127" text-anchor="middle" fill="#f85149" font-size="9">0–7 (0=Sun)</text>
+  <text x="152" y="139" text-anchor="middle" fill="#f85149" font-size="11">1-5</text>
+
+  <text x="237" y="115" text-anchor="middle" fill="#8b949e" font-size="10">command</text>
+  <text x="237" y="127" text-anchor="middle" fill="#8b949e" font-size="9">full path</text>
+
+  <!-- Decoded -->
+  <rect x="20" y="152" width="260" height="22" fill="#0d3320" rx="3" stroke="#3fb950" stroke-width="1"/>
+  <text x="30" y="166" fill="#3fb950" font-size="10">→ Runs Mon–Fri at 02:30 AM</text>
+
+  <!-- Divider -->
+  <line x1="310" y1="58" x2="310" y2="195" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Common schedule patterns -->
+  <text x="325" y="62" fill="#d29922" font-size="11" font-weight="bold">● COMMON SCHEDULES</text>
+  <rect x="325" y="68" width="450" height="122" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="335" y="84"  fill="#8b949e" font-size="9">Expression         Meaning</text>
+  <line x1="330" y1="88" x2="770" y2="88" stroke="#30363d" stroke-width="1"/>
+  <text x="335" y="102" fill="#3fb950" font-size="9">* * * * *</text>
+  <text x="445" y="102" fill="#8b949e" font-size="9">every minute</text>
+  <text x="335" y="115" fill="#3fb950" font-size="9">*/5 * * * *</text>
+  <text x="445" y="115" fill="#8b949e" font-size="9">every 5 minutes</text>
+  <text x="335" y="128" fill="#3fb950" font-size="9">0 * * * *</text>
+  <text x="445" y="128" fill="#8b949e" font-size="9">every hour (on the hour)</text>
+  <text x="335" y="141" fill="#3fb950" font-size="9">30 2 * * *</text>
+  <text x="445" y="141" fill="#8b949e" font-size="9">daily at 02:30</text>
+  <text x="335" y="154" fill="#3fb950" font-size="9">0 9 * * 1</text>
+  <text x="445" y="154" fill="#8b949e" font-size="9">every Monday at 09:00</text>
+  <text x="335" y="167" fill="#3fb950" font-size="9">0 0 1 * *</text>
+  <text x="445" y="167" fill="#8b949e" font-size="9">first day of each month</text>
+  <text x="335" y="180" fill="#3fb950" font-size="9">0 8 * * 1-5</text>
+  <text x="445" y="180" fill="#8b949e" font-size="9">weekdays at 08:00</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="202" x2="780" y2="202" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="222" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="222" fill="#3fb950" font-size="10">crontab -e</text>
+  <text x="108" y="222" fill="#30363d" font-size="10">|</text>
+  <text x="116" y="222" fill="#3fb950" font-size="10">crontab -l</text>
+  <text x="188" y="222" fill="#30363d" font-size="10">|</text>
+  <text x="196" y="222" fill="#3fb950" font-size="10">grep CRON /var/log/syslog</text>
+  <text x="394" y="222" fill="#30363d" font-size="10">|</text>
+  <text x="402" y="222" fill="#3fb950" font-size="10">echo "CMD" | at 02:00</text>
+  <text x="558" y="222" fill="#30363d" font-size="10">|</text>
+  <text x="566" y="222" fill="#3fb950" font-size="10">atq</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: always redirect cron output →  30 2 * * * /opt/backup.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1</text>
+</svg>

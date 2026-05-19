@@ -1,0 +1,80 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Disk &amp; Filesystem Management — df · du · mount · fdisk · mkfs</text>
+
+  <!-- Disk diagram label -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● /dev/sda — 500 GB</text>
+
+  <!-- Disk partition bar -->
+  <rect x="20" y="68" width="760" height="22" fill="#21262d" rx="4"/>
+  <!-- /boot 1% -->
+  <rect x="20" y="68" width="8" height="22" fill="#bc8cff" rx="4"/>
+  <!-- / 20% -->
+  <rect x="28" y="68" width="152" height="22" fill="#58a6ff"/>
+  <!-- /var 30% -->
+  <rect x="180" y="68" width="228" height="22" fill="#3fb950"/>
+  <!-- /data 35% -->
+  <rect x="408" y="68" width="266" height="22" fill="#d29922"/>
+  <!-- free 14% -->
+  <rect x="674" y="68" width="106" height="22" fill="#21262d" rx="4"/>
+  <text x="675" y="82" fill="#8b949e" font-size="9">free</text>
+
+  <!-- Partition labels below bar -->
+  <text x="20" y="104" fill="#bc8cff" font-size="9">/boot</text>
+  <text x="20" y="114" fill="#bc8cff" font-size="9">1GB</text>
+  <text x="70" y="104" fill="#58a6ff" font-size="9">/  (root)</text>
+  <text x="70" y="114" fill="#58a6ff" font-size="9">100GB  38%</text>
+  <text x="230" y="104" fill="#3fb950" font-size="9">/var</text>
+  <text x="230" y="114" fill="#3fb950" font-size="9">150GB  61%</text>
+  <text x="430" y="104" fill="#d29922" font-size="9">/data</text>
+  <text x="430" y="114" fill="#d29922" font-size="9">175GB  80% ⚠</text>
+
+  <!-- Usage bars section -->
+  <text x="20" y="140" fill="#58a6ff" font-size="11" font-weight="bold">● DISK USAGE (df -h)</text>
+
+  <!-- / bar -->
+  <text x="20" y="161" fill="#8b949e" font-size="10">/        </text>
+  <rect x="75" y="150" width="300" height="13" fill="#21262d" rx="2"/>
+  <rect x="75" y="150" width="114" height="13" fill="#58a6ff" rx="2"/>
+  <text x="382" y="160" fill="#e6edf3" font-size="10">38GB / 100GB  38%</text>
+
+  <!-- /var bar -->
+  <text x="20" y="178" fill="#8b949e" font-size="10">/var     </text>
+  <rect x="75" y="167" width="300" height="13" fill="#21262d" rx="2"/>
+  <rect x="75" y="167" width="183" height="13" fill="#3fb950" rx="2"/>
+  <text x="382" y="177" fill="#e6edf3" font-size="10">91GB / 150GB  61%</text>
+
+  <!-- /data bar -->
+  <text x="20" y="195" fill="#d29922" font-size="10">/data ⚠  </text>
+  <rect x="75" y="184" width="300" height="13" fill="#21262d" rx="2"/>
+  <rect x="75" y="184" width="240" height="13" fill="#d29922" rx="2"/>
+  <text x="382" y="194" fill="#e6edf3" font-size="10">140GB / 175GB  80%</text>
+
+  <!-- Thresholds -->
+  <rect x="600" y="138" width="180" height="50" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="612" y="152" fill="#8b949e" font-size="9">Alert thresholds:</text>
+  <text x="612" y="165" fill="#d29922" font-size="9">⚠  80% → warning alert</text>
+  <text x="612" y="178" fill="#f85149" font-size="9">🔴 90% → critical page</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="208" x2="780" y2="208" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="227" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="227" fill="#3fb950" font-size="10">df -h</text>
+  <text x="68" y="227" fill="#30363d" font-size="10">|</text>
+  <text x="76" y="227" fill="#3fb950" font-size="10">df -i</text>
+  <text x="108" y="227" fill="#30363d" font-size="10">|</text>
+  <text x="116" y="227" fill="#3fb950" font-size="10">du -sh /var</text>
+  <text x="204" y="227" fill="#30363d" font-size="10">|</text>
+  <text x="212" y="227" fill="#3fb950" font-size="10">du -h --max-depth=1 /</text>
+  <text x="368" y="227" fill="#30363d" font-size="10">|</text>
+  <text x="376" y="227" fill="#3fb950" font-size="10">fdisk -l</text>
+  <text x="428" y="227" fill="#30363d" font-size="10">|</text>
+  <text x="436" y="227" fill="#3fb950" font-size="10">lsof | grep deleted</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: lsof | grep deleted finds files still holding disk space after deletion</text>
+</svg>

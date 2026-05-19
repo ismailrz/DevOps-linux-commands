@@ -1,0 +1,77 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Docker &amp; Container Management — build · run · exec · logs · compose</text>
+
+  <!-- Left: Image layer stack -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● IMAGE LAYERS</text>
+  <!-- App layer -->
+  <rect x="20" y="68" width="200" height="22" fill="#0d3320" rx="3" stroke="#3fb950" stroke-width="1"/>
+  <text x="120" y="82" text-anchor="middle" fill="#3fb950" font-size="9">App Code Layer  COPY . /app</text>
+  <!-- Deps layer -->
+  <rect x="20" y="92" width="200" height="22" fill="#161b22" rx="3" stroke="#58a6ff" stroke-width="1"/>
+  <text x="120" y="106" text-anchor="middle" fill="#58a6ff" font-size="9">Dependencies Layer  RUN pip install</text>
+  <!-- Runtime layer -->
+  <rect x="20" y="116" width="200" height="22" fill="#161b22" rx="3" stroke="#d29922" stroke-width="1"/>
+  <text x="120" y="130" text-anchor="middle" fill="#d29922" font-size="9">Runtime Layer  python:3.11-slim</text>
+  <!-- Base OS layer -->
+  <rect x="20" y="140" width="200" height="22" fill="#161b22" rx="3" stroke="#8b949e" stroke-width="1"/>
+  <text x="120" y="154" text-anchor="middle" fill="#8b949e" font-size="9">Base OS Layer  debian:bookworm</text>
+  <!-- Cache benefit -->
+  <rect x="20" y="164" width="200" height="18" fill="#161b22" rx="3"/>
+  <text x="120" y="175" text-anchor="middle" fill="#8b949e" font-size="8">↑ cached layers = faster builds</text>
+
+  <!-- Middle: Image → Container flow -->
+  <text x="248" y="62" fill="#d29922" font-size="11" font-weight="bold">● IMAGE → CONTAINER</text>
+
+  <!-- Registry -->
+  <rect x="248" y="68" width="100" height="32" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="298" y="82" text-anchor="middle" fill="#8b949e" font-size="9">📦 Registry</text>
+  <text x="298" y="93" text-anchor="middle" fill="#8b949e" font-size="8">docker.io / ECR</text>
+
+  <line x1="298" y1="100" x2="298" y2="120" stroke="#58a6ff" stroke-width="1.5"/>
+  <polygon points="294,120 298,128 302,120" fill="#58a6ff"/>
+  <text x="310" y="113" fill="#58a6ff" font-size="8">pull</text>
+
+  <!-- Image -->
+  <rect x="248" y="128" width="100" height="32" fill="#161b22" rx="5" stroke="#58a6ff" stroke-width="1"/>
+  <text x="298" y="142" text-anchor="middle" fill="#58a6ff" font-size="9">🖼 Image</text>
+  <text x="298" y="153" text-anchor="middle" fill="#8b949e" font-size="8">read-only</text>
+
+  <line x1="298" y1="160" x2="298" y2="180" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="294,180 298,188 302,180" fill="#3fb950"/>
+  <text x="310" y="173" fill="#3fb950" font-size="8">run</text>
+
+  <!-- Container -->
+  <rect x="248" y="188" width="100" height="32" fill="#0d3320" rx="5" stroke="#3fb950" stroke-width="2"/>
+  <text x="298" y="203" text-anchor="middle" fill="#3fb950" font-size="9">📦 Container</text>
+  <text x="298" y="215" text-anchor="middle" fill="#8b949e" font-size="8">writable layer</text>
+
+  <!-- Right: Key commands -->
+  <text x="380" y="62" fill="#3fb950" font-size="11" font-weight="bold">● ESSENTIAL COMMANDS</text>
+  <rect x="380" y="68" width="400" height="155" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+
+  <text x="390" y="84"  fill="#d29922" font-size="9">Build &amp; Images</text>
+  <text x="390" y="97"  fill="#3fb950" font-size="9">docker build -t app:1.0 .</text>
+  <text x="390" y="110" fill="#3fb950" font-size="9">docker images</text>
+  <text x="390" y="123" fill="#3fb950" font-size="9">docker image prune -a</text>
+
+  <line x1="385" y1="128" x2="775" y2="128" stroke="#30363d" stroke-width="1"/>
+  <text x="390" y="142" fill="#d29922" font-size="9">Run &amp; Lifecycle</text>
+  <text x="390" y="155" fill="#3fb950" font-size="9">docker run -d --name app -p 8080:80 app:1.0</text>
+  <text x="390" y="168" fill="#3fb950" font-size="9">docker stop|start|restart app</text>
+  <text x="390" y="181" fill="#3fb950" font-size="9">docker rm -f app</text>
+
+  <line x1="385" y1="186" x2="775" y2="186" stroke="#30363d" stroke-width="1"/>
+  <text x="390" y="199" fill="#d29922" font-size="9">Inspect &amp; Debug</text>
+  <text x="390" y="212" fill="#3fb950" font-size="9">docker exec -it app bash</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="232" x2="780" y2="232" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="248" fill="#8b949e" font-size="10">$ docker logs -f app  |  docker stats  |  docker compose up -d --build  |  docker inspect app  |  docker ps -a</text>
+</svg>

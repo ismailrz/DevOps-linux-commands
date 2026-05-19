@@ -1,0 +1,85 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Git for DevOps — branch · merge · rebase · tag · cherry-pick · bisect</text>
+
+  <!-- Git graph title -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● GIT BRANCH GRAPH</text>
+
+  <!-- Timeline axis -->
+  <line x1="30" y1="170" x2="760" y2="170" stroke="#30363d" stroke-width="1"/>
+
+  <!-- main branch commits -->
+  <text x="20" y="80" fill="#8b949e" font-size="10">main</text>
+  <circle cx="80"  cy="100" r="8" fill="#58a6ff" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="160" cy="100" r="8" fill="#58a6ff" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="400" cy="100" r="8" fill="#58a6ff" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="560" cy="100" r="8" fill="#58a6ff" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="680" cy="100" r="8" fill="#58a6ff" stroke="#0d1117" stroke-width="2"/>
+  <line x1="88" y1="100" x2="152" y2="100" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="168" y1="100" x2="392" y2="100" stroke="#58a6ff" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="408" y1="100" x2="552" y2="100" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="568" y1="100" x2="672" y2="100" stroke="#58a6ff" stroke-width="2"/>
+
+  <!-- v1.0 tag -->
+  <rect x="60" y="78" width="40" height="16" fill="#d29922" rx="3"/>
+  <text x="80" y="89" text-anchor="middle" fill="#0d1117" font-size="9" font-weight="bold">v1.0</text>
+
+  <!-- v1.1 tag -->
+  <rect x="540" y="78" width="40" height="16" fill="#d29922" rx="3"/>
+  <text x="560" y="89" text-anchor="middle" fill="#0d1117" font-size="9" font-weight="bold">v1.1</text>
+
+  <!-- feature branch -->
+  <text x="20" y="144" fill="#8b949e" font-size="10">feature</text>
+  <line x1="160" y1="100" x2="240" y2="140" stroke="#3fb950" stroke-width="2"/>
+  <circle cx="240" cy="140" r="7" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="320" cy="140" r="7" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+  <line x1="247" y1="140" x2="313" y2="140" stroke="#3fb950" stroke-width="2"/>
+  <!-- merge back -->
+  <line x1="320" y1="140" x2="400" y2="100" stroke="#3fb950" stroke-width="2"/>
+  <text x="280" y="155" text-anchor="middle" fill="#3fb950" font-size="8">feature/auth</text>
+
+  <!-- hotfix branch -->
+  <text x="20" y="170" fill="#8b949e" font-size="10">hotfix</text>
+  <line x1="560" y1="100" x2="610" y2="165" stroke="#f85149" stroke-width="2"/>
+  <circle cx="610" cy="165" r="7" fill="#f85149" stroke="#0d1117" stroke-width="2"/>
+  <!-- cherry-pick arrow -->
+  <line x1="610" y1="158" x2="610" y2="107" stroke="#f85149" stroke-width="1" stroke-dasharray="4"/>
+  <polygon points="606,107 610,99 614,107" fill="#f85149"/>
+  <text x="625" y="135" fill="#f85149" font-size="8">cherry-pick</text>
+  <!-- merge hotfix -->
+  <line x1="617" y1="165" x2="673" y2="107" stroke="#f85149" stroke-width="2"/>
+
+  <!-- HEAD label -->
+  <text x="690" y="92" fill="#bc8cff" font-size="9">HEAD</text>
+  <line x1="688" y1="94" x2="686" y2="100" stroke="#bc8cff" stroke-width="1"/>
+
+  <!-- Right side quick ref -->
+  <rect x="700" y="58" width="90" height="110" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="745" y="72" text-anchor="middle" fill="#d29922" font-size="9">Quick Ref</text>
+  <line x1="705" y1="76" x2="785" y2="76" stroke="#30363d" stroke-width="1"/>
+  <text x="708" y="89"  fill="#3fb950" font-size="8">git log --oneline</text>
+  <text x="708" y="101" fill="#3fb950" font-size="8">git switch -c feat</text>
+  <text x="708" y="113" fill="#3fb950" font-size="8">git rebase main</text>
+  <text x="708" y="125" fill="#3fb950" font-size="8">git tag -a v1.0</text>
+  <text x="708" y="137" fill="#3fb950" font-size="8">git cherry-pick</text>
+  <text x="708" y="149" fill="#3fb950" font-size="8">git bisect start</text>
+  <text x="708" y="161" fill="#3fb950" font-size="8">git stash push</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="188" x2="780" y2="188" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="207" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="207" fill="#3fb950" font-size="10">git log --oneline --graph --all</text>
+  <text x="240" y="207" fill="#30363d" font-size="10">|</text>
+  <text x="248" y="207" fill="#3fb950" font-size="10">git revert abc1234</text>
+  <text x="388" y="207" fill="#30363d" font-size="10">|</text>
+  <text x="396" y="207" fill="#3fb950" font-size="10">git tag -a v1.2 -m "Release"</text>
+  <text x="590" y="207" fill="#30363d" font-size="10">|</text>
+  <text x="598" y="207" fill="#3fb950" font-size="10">git bisect start</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: git revert is safe for shared branches — it creates a new commit rather than rewriting history</text>
+</svg>

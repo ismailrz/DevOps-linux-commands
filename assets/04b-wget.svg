@@ -1,0 +1,77 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">wget — Non-Interactive File Download Command</text>
+
+  <!-- Download flow diagram -->
+  <text x="20" y="62" fill="#58a6ff" font-size="11" font-weight="bold">● DOWNLOAD FLOW</text>
+
+  <!-- Source URL -->
+  <rect x="20" y="70" width="120" height="40" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="87" text-anchor="middle" fill="#8b949e" font-size="9">☁ Remote URL</text>
+  <text x="80" y="100" text-anchor="middle" fill="#8b949e" font-size="8">https://example.com</text>
+
+  <!-- Arrow with progress -->
+  <line x1="140" y1="90" x2="200" y2="90" stroke="#58a6ff" stroke-width="2"/>
+  <polygon points="200,86 208,90 200,94" fill="#58a6ff"/>
+  <!-- progress bar above arrow -->
+  <rect x="140" y="80" width="68" height="7" fill="#21262d" rx="2"/>
+  <rect x="140" y="80" width="51" height="7" fill="#3fb950" rx="2"/>
+  <text x="174" y="76" text-anchor="middle" fill="#3fb950" font-size="7">75%</text>
+
+  <!-- wget process -->
+  <rect x="208" y="70" width="100" height="40" fill="#161b22" rx="5" stroke="#58a6ff" stroke-width="2"/>
+  <text x="258" y="87" text-anchor="middle" fill="#58a6ff" font-size="11">wget</text>
+  <text x="258" y="101" text-anchor="middle" fill="#8b949e" font-size="8">--tries=5  -c</text>
+
+  <!-- Arrow out -->
+  <line x1="308" y1="90" x2="368" y2="90" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="368,86 376,90 368,94" fill="#3fb950"/>
+
+  <!-- Output file -->
+  <rect x="376" y="70" width="110" height="40" fill="#0d3320" rx="5" stroke="#3fb950" stroke-width="1"/>
+  <text x="431" y="87" text-anchor="middle" fill="#3fb950" font-size="9">📄 archive.tar.gz</text>
+  <text x="431" y="100" text-anchor="middle" fill="#8b949e" font-size="8">saved locally</text>
+
+  <!-- wget vs curl comparison -->
+  <rect x="510" y="58" width="270" height="88" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="645" y="73" text-anchor="middle" fill="#8b949e" font-size="9">wget vs curl</text>
+  <line x1="515" y1="77" x2="775" y2="77" stroke="#30363d" stroke-width="1"/>
+  <text x="524" y="91" fill="#58a6ff" font-size="9">wget</text>
+  <text x="566" y="91" fill="#8b949e" font-size="8">best for downloading files</text>
+  <text x="524" y="104" fill="#58a6ff" font-size="9">wget</text>
+  <text x="566" y="104" fill="#8b949e" font-size="8">recursive / mirror sites</text>
+  <text x="524" y="117" fill="#3fb950" font-size="9">curl</text>
+  <text x="566" y="117" fill="#8b949e" font-size="8">best for APIs &amp; HTTP testing</text>
+  <text x="524" y="130" fill="#3fb950" font-size="9">curl</text>
+  <text x="566" y="130" fill="#8b949e" font-size="8">custom headers, status codes</text>
+
+  <!-- Key flags -->
+  <text x="20" y="132" fill="#d29922" font-size="11" font-weight="bold">● KEY FLAGS</text>
+  <rect x="20" y="138" width="476" height="80" fill="#161b22" rx="4" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="153" fill="#d29922" font-size="9">-O filename</text>
+  <text x="130" y="153" fill="#8b949e" font-size="9">save with custom filename</text>
+  <text x="310" y="153" fill="#d29922" font-size="9">-q</text>
+  <text x="340" y="153" fill="#8b949e" font-size="9">quiet (no progress bar)</text>
+  <text x="30" y="168" fill="#d29922" font-size="9">-c</text>
+  <text x="60" y="168" fill="#8b949e" font-size="9">resume interrupted download</text>
+  <text x="310" y="168" fill="#d29922" font-size="9">-b</text>
+  <text x="340" y="168" fill="#8b949e" font-size="9">run in background</text>
+  <text x="30" y="183" fill="#d29922" font-size="9">--tries=N</text>
+  <text x="110" y="183" fill="#8b949e" font-size="9">retry N times on failure</text>
+  <text x="310" y="183" fill="#d29922" font-size="9">--mirror</text>
+  <text x="378" y="183" fill="#8b949e" font-size="9">recursive site download</text>
+  <text x="30" y="198" fill="#d29922" font-size="9">--spider</text>
+  <text x="104" y="198" fill="#8b949e" font-size="9">check URL without downloading</text>
+  <text x="310" y="198" fill="#d29922" font-size="9">--timeout=N</text>
+  <text x="408" y="198" fill="#8b949e" font-size="9">connection timeout</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="228" x2="780" y2="228" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="247" fill="#8b949e" font-size="10">$ wget https://url/file.tar.gz  |  wget -c https://url/file  |  wget -q --spider https://url/health  |  wget --mirror site</text>
+</svg>

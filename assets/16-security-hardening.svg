@@ -1,0 +1,95 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>text{font-family:'Courier New',Courier,monospace}</style></defs>
+  <rect width="800" height="260" fill="#0d1117" rx="10"/>
+  <rect width="800" height="40" fill="#161b22" rx="10"/>
+  <rect y="20" width="800" height="20" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#f85149"/>
+  <circle cx="44" cy="20" r="6" fill="#d29922"/>
+  <circle cx="64" cy="20" r="6" fill="#3fb950"/>
+  <text x="400" y="25" text-anchor="middle" fill="#8b949e" font-size="12">Linux Security &amp; Server Hardening — fail2ban · iptables · openssl · auditd</text>
+
+  <!-- Defense-in-depth label -->
+  <text x="20" y="62" fill="#f85149" font-size="11" font-weight="bold">● DEFENSE-IN-DEPTH LAYERS</text>
+
+  <!-- Attack source -->
+  <rect x="20" y="70" width="80" height="36" fill="#2d1010" rx="5" stroke="#f85149" stroke-width="2"/>
+  <text x="60" y="85" text-anchor="middle" fill="#f85149" font-size="10">⚠ Attack</text>
+  <text x="60" y="99" text-anchor="middle" fill="#8b949e" font-size="8">brute-force</text>
+
+  <!-- Arrow 1 -->
+  <line x1="100" y1="88" x2="128" y2="88" stroke="#f85149" stroke-width="2"/>
+  <polygon points="128,84 136,88 128,92" fill="#f85149"/>
+
+  <!-- fail2ban -->
+  <rect x="136" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#d29922" stroke-width="2"/>
+  <text x="186" y="84" text-anchor="middle" fill="#d29922" font-size="9">🚫 fail2ban</text>
+  <text x="186" y="97" text-anchor="middle" fill="#8b949e" font-size="8">IP ban on failures</text>
+
+  <!-- blocked arrow -->
+  <line x1="236" y1="88" x2="264" y2="88" stroke="#d29922" stroke-width="2"/>
+  <polygon points="264,84 272,88 264,92" fill="#d29922"/>
+
+  <!-- iptables -->
+  <rect x="272" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#bc8cff" stroke-width="2"/>
+  <text x="322" y="84" text-anchor="middle" fill="#bc8cff" font-size="9">🧱 iptables</text>
+  <text x="322" y="97" text-anchor="middle" fill="#8b949e" font-size="8">port filtering</text>
+
+  <!-- Arrow -->
+  <line x1="372" y1="88" x2="400" y2="88" stroke="#bc8cff" stroke-width="2"/>
+  <polygon points="400,84 408,88 400,92" fill="#bc8cff"/>
+
+  <!-- SSH hardening -->
+  <rect x="408" y="70" width="110" height="36" fill="#161b22" rx="5" stroke="#58a6ff" stroke-width="2"/>
+  <text x="463" y="84" text-anchor="middle" fill="#58a6ff" font-size="9">🔐 SSH Keys</text>
+  <text x="463" y="97" text-anchor="middle" fill="#8b949e" font-size="8">no password auth</text>
+
+  <!-- Arrow -->
+  <line x1="518" y1="88" x2="546" y2="88" stroke="#58a6ff" stroke-width="2"/>
+  <polygon points="546,84 554,88 546,92" fill="#58a6ff"/>
+
+  <!-- App -->
+  <rect x="554" y="70" width="80" height="36" fill="#0d3320" rx="5" stroke="#3fb950" stroke-width="2"/>
+  <text x="594" y="84" text-anchor="middle" fill="#3fb950" font-size="9">✅ App</text>
+  <text x="594" y="97" text-anchor="middle" fill="#8b949e" font-size="8">protected</text>
+
+  <!-- auditd audit trail -->
+  <line x1="634" y1="88" x2="662" y2="88" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="662,84 670,88 662,92" fill="#30363d"/>
+  <rect x="670" y="70" width="100" height="36" fill="#161b22" rx="5" stroke="#30363d" stroke-width="1"/>
+  <text x="720" y="84" text-anchor="middle" fill="#8b949e" font-size="9">📋 auditd</text>
+  <text x="720" y="97" text-anchor="middle" fill="#8b949e" font-size="8">audit log trail</text>
+
+  <!-- Detail boxes -->
+  <rect x="20" y="120" width="230" height="72" fill="#161b22" rx="4" stroke="#d29922" stroke-width="1"/>
+  <text x="30" y="135" fill="#d29922" font-size="9">fail2ban</text>
+  <text x="30" y="149" fill="#3fb950" font-size="8">fail2ban-client status sshd</text>
+  <text x="30" y="161" fill="#3fb950" font-size="8">fail2ban-client set sshd unbanip IP</text>
+  <text x="30" y="173" fill="#8b949e" font-size="8">bans IPs after N failed SSH logins</text>
+  <text x="30" y="185" fill="#8b949e" font-size="8">/etc/fail2ban/jail.local</text>
+
+  <rect x="262" y="120" width="230" height="72" fill="#161b22" rx="4" stroke="#bc8cff" stroke-width="1"/>
+  <text x="272" y="135" fill="#bc8cff" font-size="9">iptables</text>
+  <text x="272" y="149" fill="#3fb950" font-size="8">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</text>
+  <text x="272" y="161" fill="#3fb950" font-size="8">iptables -A INPUT -j DROP</text>
+  <text x="272" y="173" fill="#8b949e" font-size="8">allowlist ports, deny everything else</text>
+  <text x="272" y="185" fill="#8b949e" font-size="8">ESTABLISHED,RELATED rule comes first</text>
+
+  <rect x="504" y="120" width="270" height="72" fill="#161b22" rx="4" stroke="#58a6ff" stroke-width="1"/>
+  <text x="514" y="135" fill="#58a6ff" font-size="9">openssl / TLS</text>
+  <text x="514" y="149" fill="#3fb950" font-size="8">openssl rand -base64 32</text>
+  <text x="514" y="161" fill="#3fb950" font-size="8">openssl s_client -connect host:443</text>
+  <text x="514" y="173" fill="#8b949e" font-size="8">check cert expiry · gen strong passwords</text>
+  <text x="514" y="185" fill="#3fb950" font-size="8">auditctl -w /etc/passwd -p rwa -k audit</text>
+
+  <!-- Bottom bar -->
+  <line x1="20" y1="204" x2="780" y2="204" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="223" fill="#8b949e" font-size="10">$</text>
+  <text x="32" y="223" fill="#3fb950" font-size="10">fail2ban-client status</text>
+  <text x="192" y="223" fill="#30363d" font-size="10">|</text>
+  <text x="200" y="223" fill="#3fb950" font-size="10">iptables -L -n -v --line-numbers</text>
+  <text x="404" y="223" fill="#30363d" font-size="10">|</text>
+  <text x="412" y="223" fill="#3fb950" font-size="10">ausearch -k passwd_changes</text>
+  <text x="590" y="223" fill="#30363d" font-size="10">|</text>
+  <text x="598" y="223" fill="#3fb950" font-size="10">openssl rand -base64 32</text>
+  <text x="20" y="248" fill="#8b949e" font-size="10">Tip: find SUID files with  find / -perm -4000 -type f 2&gt;/dev/null  — any unexpected ones are a red flag</text>
+</svg>
