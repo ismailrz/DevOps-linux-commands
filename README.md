@@ -1,4 +1,4 @@
-# DevOps Linux Commands: The Complete Step-by-Step Guide for Engineers (2025)
+# DevOps Linux Commands: The Complete Step-by-Step Guide for Engineers (2026)
 
 ![GitHub stars](https://img.shields.io/github/stars/yourname/devops-linux-commands?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/yourname/devops-linux-commands?style=social)
@@ -2722,4 +2722,4 @@ Found an error or want to add a command? Open an issue or pull request. This gui
 
 ---
 
-*Last updated: 2025 | For feedback and issues, please open a GitHub issue.*
+*Last updated: 2026 | For feedback and issues, please open a GitHub issue.*
